@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+    
+{% block body %}
+    <div class="row">
+        
+        <h1>Commentaires</h1>
+       
+          {% for comment in comments %}
+              <p><strong>{{ comment.user.username }}</strong> <br/>
+              {{ comment.content }}</p>
+          {%endfor%}
+       
+       
+        <div class="col-md-8">
+            <h1>Ajouter un commentaire</h1>
+            
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-primary">Commenter</button>
+            {{ form_end(form) }}
+        </div>
+  
+        
+       <div class="col-md-4">
+            <h2>Mes badges</h2>
+            {% if badges is empty %}
+                Vous n'avez pas de badges :(
+            {% else %}
+                <ul class='list-group'>
+                    {% for badge in badges %}
+                        <li class="list-group-item">{{ badge.name }}</li>
+                        
+                    {%endfor%}
+                </ul>
+            {%endif%}
+        </div>
+       
+    
+{% endblock %}
